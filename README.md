@@ -1,9 +1,9 @@
 jQueryToast v0.2
 ================
 
-## Android-like Toast Plugin for jQuery
+An Android-like Toast Plugin for jQuery.
 
-## About 
+### About 
 
 This is a simple plugin for displaying Android-like Toast messages.  Call the plugin and it displays the message and fades away exactly as a toast on an android device would. Any messages that are created while another is being displayed will be put in a Que and displayed subsequently.
 
