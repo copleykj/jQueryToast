@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>jQuery Toast Plugin</title>
+		<link type="text/css" rel="stylesheet" href="css/toast.css" />
+		<style type="text/css">
+			#container {
+				width: 800px;
+				margin: 0 auto;
+			}
+			img {float:right;}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<img src="img/toast.png" height="128" width="128" /> 
+			<h1>jQueryToast v0.2</h1>
+			<h2><em>Android-like Toast Plugin for jQuery</em></h2>
+			<h2>About</h2>
+			<p>
+				This is a simple plugin for displaying Android-like Toast messages.
+				Call the plugin and it displays the message and fades away exactly as a
+				toast on an android device would. Any messages that are created while
+				another is being displayed will be put in a Que and displayed subsequently.
+			</p>
+			<p>
+				The plugin takes one parameter, the options object. This object passes the message
+				and any other of the configurable options to customize the plugin. While you do not have
+				to pass in the object at all, if you do not the toast message will be &quot;This is a Toast&quot;.
+			</p>
+			<h2>Options</h2>
+			<p>All parameters are passed to the plugin using an object. The options are as follows:</p>
+			<ul>
+				<li>message &lt;string&gt; - Default: "This is a Toast"</li>
+				<li>displayTime &lt;integer&gt; - Default: 2000 - Time to display the Toast in milliseconds</li>
+				<li>inTime &lt;integer&gt; - Default: 300 - Duration of fadeIn in milliseconds</li>
+				<li>outTime &lt;integer&gt; - Default: 200 - Duration of fadeOut in milliseconds</li>
+				<li>maxWidth &lt;integer&gt; - Default: 400 - Maximum width in pixels</li>
+ 				<li>showDirect &lt;boolean&gt; - Default: false - If set, show the message immediately instead of queueing</li>
+			</ul>
+			<h2>Usage Example</h2>
+			<pre>
+&lt;script&gt;
+  $(function(){
+    $(document).click(function(){
+      $.toast({
+        message:&quot;A Toast To You!&quot;,
+        displayTime:4000,
+        inTime:100,
+        outTime:400
+      });
+    });
+  });
+&lt;/script&gt;
+			</pre>
+			<h2>Demo</h2>
+			<p><a id="demoLink1" href="#">Single Toast - Click Me!</a></p>
+			<p><a id="demoLink2" href="#">Toasts Que - Click Me!</a></p>
+			<p><a id="demoLink3" href="#">Priority Toast - Click while other toasts displaying.</a></p>
+			<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script src = "js/jquery.toast.js"></script>
+		<script>
+  $(function(){
+    $("#demoLink1").click(function(e){
+      $.toast({
+        message:"A Toast To You",
+        displayTime:4000,
+        inTime:100,
+        outTime:400
+      });
+      e.preventDefault();
+    });
+    $("#demoLink2").click(function(e){
+      $.toast({message:"First Toast"});
+      $.toast({message:"Second Toast"});
+      $.toast({message:"Third Toast"});
+      $.toast({message:"Fourth Toast"});
+      e.preventDefault();
+    });
+    $("#demoLink3").click(function(e){
+      $.toast({message:"Priority Toast!", showDirect: true});
+      e.preventDefault();
+    });
+  });
+		</script>
+	</body>
+</html>
