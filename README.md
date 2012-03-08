@@ -1,7 +1,9 @@
 jQueryToast v0.2
 ================
 
-An Android-like Toast Plugin for jQuery.
+**An Android-like Toast Plugin for jQuery.**
+
+[Home Page](http://coplay.dyndns.org:9999/~kel/jquerytoast/index.html).
 
 ### About 
 
@@ -9,6 +11,5 @@ This is a simple plugin for displaying Android-like Toast messages.  Call the pl
 
 This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
 
-[jQuery Toast Home Page](http://coplay.dyndns.org:9999/~kel/jquerytoast/index.html).
 
 
