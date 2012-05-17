@@ -1,6 +1,6 @@
 /*
  * Intentionally simple Android-like Toast notification plugin
- * version 0.1
+ * version 0.2
  * by Kelly Copley
  * copleykj@gmail.com
  *
@@ -69,7 +69,7 @@
 		toast = $("<div class='toast'>"+options.message+"</div>");
 		$("body").append(toast);
 				
-		//make sure it toast isn't too wide and center it
+		//make sure toast isn't too wide and center it
 		//TODO: add options for where to display the notification like bottom-right or top-center
 		//TODO: See if there is a faster way to do this, Firefox lags a bit on this step
 		toast.css({
