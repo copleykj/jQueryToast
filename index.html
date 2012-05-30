@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>jQuery Toast Plugin</title>
@@ -14,8 +13,8 @@
 	</head>
 	<body>
 		<div id="container">
-			<img src="img/toast.png" height="128" width="128" /> 
-			<h1>jQueryToast v0.2</h1>
+			<img src="img/toast.png" height="128" width="128" alt="A piece of toast"/> 
+			<h1>jQueryToast v0.3</h1>
 			<h2><em>Android-like Toast Plugin for jQuery</em></h2>
 			<h2>About</h2>
 			<p>
@@ -38,6 +37,8 @@
 				<li>outTime &lt;integer&gt; - Default: 200 - Duration of fadeOut in milliseconds</li>
 				<li>maxWidth &lt;integer&gt; - Default: 400 - Maximum width in pixels</li>
  				<li>showDirect &lt;boolean&gt; - Default: false - If set, show the message immediately instead of queueing</li>
+ 				<li>vPosition &lt;string&gt; - Default: center - Vertical position, accepts top, bottom, and center</li>
+ 				<li>hPosition &lt;string&gt; - Default: center - Horizontal position, accepts right, left, and center</li>
 			</ul>
 			<h2>Usage Example</h2>
 			<pre>
@@ -55,32 +56,136 @@
 &lt;/script&gt;
 			</pre>
 			<h2>Demo</h2>
-			<p><a id="demoLink1" href="#">Single Toast - Click Me!</a></p>
-			<p><a id="demoLink2" href="#">Toasts Que - Click Me!</a></p>
-			<p><a id="demoLink3" href="#">Priority Toast - Click while other toasts displaying.</a></p>
+			<p>Single toast with positioning</p>
+				<ul>
+					<li><a id="cc" href="#">Center-Center</a></li>
+					<li><a id="cl" href="#">Center-Left</a></li>
+					<li><a id="cr" href="#">Center-Right</a></li>
+					<li><a id="tc" href="#">Top-Center</a></li>
+					<li><a id="tl" href="#">Top-Left</a></li>
+					<li><a id="tr" href="#">Top-Right</a></li>
+					<li><a id="bc" href="#">Bottom-Center</a></li>
+					<li><a id="bl" href="#">Bottom-Left</a></li>
+					<li><a id="br" href="#">Bottom-Right</a></li>
+				</ul>
+			<p><a id="que" href="#">Toasts Que - Click Me!</a></p>
+			<p><a id="priority" href="#">Priority Toast - Click while other toasts displaying.</a></p>
 			<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
 		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script src = "js/jquery.toast.js"></script>
 		<script>
   $(function(){
-    $("#demoLink1").click(function(e){
+  	//center center
+    $("#cc").click(function(e){
       $.toast({
-        message:"A Toast To You",
-        displayTime:4000,
+        message:"Center-Center",
+        displayTime:1000,
         inTime:100,
         outTime:400
       });
       e.preventDefault();
     });
-    $("#demoLink2").click(function(e){
+    //center left
+    $("#cl").click(function(e){
+      $.toast({
+        message:"Center-Left",
+        displayTime:1000,
+        inTime:100,
+        outTime:400,
+        hPosition:"left"
+      });
+      e.preventDefault();
+    });
+    //center right
+    $("#cr").click(function(e){
+      $.toast({
+        message:"Center-Right",
+        displayTime:1000,
+        inTime:100,
+        outTime:400,
+        hPosition:"right"
+      });
+      e.preventDefault();
+    });
+	//bottom center
+    $("#bc").click(function(e){
+      $.toast({
+        message:"Bottom-Center",
+        displayTime:1000,
+        inTime:100,
+        outTime:400,
+        vPosition:"bottom"
+      });
+      e.preventDefault();
+    })
+    //bottom left
+    $("#bl").click(function(e){
+      $.toast({
+        message:"Bottom-Left",
+        displayTime:1000,
+        inTime:100,
+        outTime:400,
+        vPosition:"bottom",
+        hPosition:"left"
+      });
+      e.preventDefault();
+    })
+    //bottom right
+    $("#br").click(function(e){
+      $.toast({
+        message:"Bottom-Right",
+        displayTime:1000,
+        inTime:100,
+        outTime:400,
+        vPosition:"bottom",
+        hPosition:"right"
+      });
+      e.preventDefault();
+    })
+    //top center
+    $("#tc").click(function(e){
+      $.toast({
+        message:"Top-Center",
+        displayTime:1000,
+        inTime:100,
+        outTime:400,
+        vPosition:"top"
+      });
+      e.preventDefault();
+    });
+    //top left
+    $("#tl").click(function(e){
+      $.toast({
+        message:"Top-Left",
+        displayTime:1000,
+        inTime:100,
+        outTime:400,
+        vPosition:"top",
+        hPosition:"left"
+      });
+      e.preventDefault();
+    });
+    //top right
+    $("#tr").click(function(e){
+      $.toast({
+        message:"Top-Right",
+        displayTime:1000,
+        inTime:100,
+        outTime:400,
+        vPosition:"top",
+        hPosition:"right"
+      });
+      e.preventDefault();
+    });
+    $("#que").click(function(e){
       $.toast({message:"First Toast"});
       $.toast({message:"Second Toast"});
       $.toast({message:"Third Toast"});
       $.toast({message:"Fourth Toast"});
       e.preventDefault();
     });
-    $("#demoLink3").click(function(e){
+    $("#priority").click(function(e){
       $.toast({message:"Priority Toast!", showDirect: true});
       e.preventDefault();
     });
