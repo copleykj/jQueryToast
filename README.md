@@ -1,4 +1,4 @@
-jQueryToast v0.2
+jQueryToast v0.3
 ================
 
 **An Android-like Toast Plugin for jQuery.**
