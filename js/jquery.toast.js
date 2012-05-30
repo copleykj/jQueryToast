@@ -1,6 +1,6 @@
 /*
  * Intentionally simple Android-like Toast notification plugin
- * version 0.2
+ * version 0.3
  * by Kelly Copley
  * copleykj@gmail.com
  *
@@ -24,9 +24,14 @@
  */
 
 (function($) {
-	toasting = false; 	// Global to check if toast is being displayed
-	toastQue = [];		// Array to store messages if a message is already being displayed
-	toast_timer = null; // Timer of currently displaying toast
+	var VPOS = {"top":32, "center":2, "bottom":1.0625}	//constants for vertical position
+	var HPOS = {"left":32, "center":2, "right":1.0625}	//constants for horizontal position
+	var vPosition;	//vertical positoin of the toast
+	var hPosition;	//horizontal position of the toast
+	var toast_timer = null; // Timer of currently displaying toast
+	
+	window.toasting = false; 	// Global to check if toast is being displayed
+	window.toastQue = [];		// Array to store messages if a message is already being displayed
 	
 	//return new toastmessage object
 	$.toast = function (options) {
@@ -41,12 +46,41 @@
 			inTime:300,
 			outTime:200,
 			maxWidth:400,
-			showDirect: false
+			showDirect: false,
+			vPosition: "center",
+			hPosition: "center"
 		}; 
 			
 		options = $.extend(defaults, options);
 
-
+		//determine vertical position
+		switch(options.vPosition){
+			case 'Top': 	//compensate for case
+			case 'top':
+				vPosition = VPOS.top;
+				break;
+			case 'Bottom': 	//compensate for case
+			case 'bottom':
+				vPosition = VPOS.bottom;
+				break;
+			default:
+				vPosition = VPOS.center;
+		}
+		
+		//determine horizontal position
+		switch(options.hPosition){
+			case 'Left': 	//compensate for case
+			case 'left':
+				hPosition = HPOS.left;
+				break;
+			case 'Right': 	//compensate for case
+			case 'right':
+				hPosition = HPOS.right;
+				break;
+			default:
+				hPosition = HPOS.center;
+		}
+		
 		if( options.showDirect ) {
 			// We have a priority toast, stop displaying current if any
 			$("div.toast").remove();
@@ -73,12 +107,11 @@
 		var windowHeight = window.innerHeight;
 		var windowWidth = window.innerWidth;
 				
-		//make sure toast isn't too wide and center it
-		//TODO: add options for where to display the notification like bottom-right or top-center
+		//make sure toast isn't too wide and position it
 		toast.css({
 			"max-width":options.maxWidth+"px",
-			"top":((windowHeight - toast.outerHeight()) / 2) + $(window).scrollTop() + "px",
-			"left":((windowWidth - toast.outerWidth()) / 2) + $(window).scrollLeft() + "px"
+			"top":((windowHeight - toast.outerHeight()) / vPosition) + $(window).scrollTop() + "px",
+			"left":((windowWidth - toast.outerWidth()) / hPosition) + $(window).scrollLeft() + "px"
 		});
 				
 		//Show the toast message
