@@ -68,14 +68,17 @@
 		//create the new element and add it to the document
 		toast = $("<div class='toast'>"+options.message+"</div>");
 		$("body").append(toast);
+		
+		//get the width and height of the viewing area
+		var windowHeight = window.innerHeight;
+		var windowWidth = window.innerWidth;
 				
 		//make sure toast isn't too wide and center it
 		//TODO: add options for where to display the notification like bottom-right or top-center
-		//TODO: See if there is a faster way to do this, Firefox lags a bit on this step
 		toast.css({
 			"max-width":options.maxWidth+"px",
-			"top":(($(window).height() - toast.outerHeight()) / 2) + $(window).scrollTop() + "px",
-			"left":(($(window).width() - toast.outerWidth()) / 2) + $(window).scrollLeft() + "px"
+			"top":((windowHeight - toast.outerHeight()) / 2) + $(window).scrollTop() + "px",
+			"left":((windowWidth - toast.outerWidth()) / 2) + $(window).scrollLeft() + "px"
 		});
 				
 		//Show the toast message
