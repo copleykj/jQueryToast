@@ -104,8 +104,8 @@
 		$("body").append(toast);
 		
 		//get the width and height of the viewing area
-		var windowHeight = window.innerHeight;
-		var windowWidth = window.innerWidth;
+		var windowHeight = $(window).innerHeight();
+		var windowWidth = $(window).innerWidth();
 				
 		//make sure toast isn't too wide and position it
 		toast.css({
